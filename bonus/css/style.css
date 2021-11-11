@@ -1,0 +1,109 @@
+/* regole generali */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#carousel {
+    padding-top: 50px;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* blocco immagine principale */
+#immagini {
+    height: 500px;
+    width: 85%;
+    position: relative;
+    overflow: hidden;
+}
+
+#immagini .blocco-immagine {
+    height: 100%;
+    display: none;
+}
+
+#immagini .blocco-immagine.active {
+    display: block;
+}
+
+#immagini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#immagini .testi {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    left: 100px;
+    text-align: right;
+    color: white;
+}
+
+/* blocco immagini piccole laterali */
+#elenco {
+    width: 15%;
+    height: 500px;
+    position: relative;
+}
+
+.thumb {
+    height: 100px;
+    position: relative;
+}
+
+.thumb img {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.thumb .trasparenza {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.thumb.active {
+    border: 2px solid lightgray;
+}
+
+.thumb.active .trasparenza {
+    display: none;
+}
+
+.successivo, .precedente {
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    background-color: grey;
+    cursor: pointer;
+    z-index: 1;
+    color: white;
+    text-align: center;
+}
+
+.successivo {
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 12px);
+}
+
+.precedente {
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 12px);
+}
+
+.fas {
+    font-size: 14px;
+}
