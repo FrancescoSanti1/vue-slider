@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vue js slider</title>
+</head>
+<body>
+    <div id="carousel">
+        <div id="immagini">
+            <div class="blocco-immagine active">
+                <!-- nei campi degli attributi vado prendere il valore della proprietà "percorso" all'interno dell'oggetto che occupa la posizione indicata dal selettore "elementoSelezionato" -->
+                <!-- stessa cosa per l'alt -->
+                <img :src="listaElementi[elementoSelezionato].percorso" :alt="listaElementi[elementoSelezionato].titolo">
+        
+                <!-- come sopra, ma qui non sono all'interno di un attributo, ma inserisco il valore all'interno di un tag -->
+                <div class="testi">
+                    <h2>{{listaElementi[elementoSelezionato].titolo}}</h2>
+                    <p>{{listaElementi[elementoSelezionato].testo}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="elenco">
+            <!-- il for scorre gli oggetti all'interno dell'array "listaElementi" e per ognuno vado a prendere i valori delle proprietà per inserirli come valori degli attributi di img -->
+            <!-- inoltre, per ognuno controllo che, quando l'indice dell'elemento corrisponde con l'elemento attualmente selezionato, allora inserisco la classe "active" in modo da togliere la trasparenza -->
+            <div v-for="(elemento, i) in listaElementi" class="thumb" :class="elementoSelezionato === i ? 'active' : ''" :key="i">
+                <img :src="elemento.percorso" :alt="elemento.titolo">
+                <div class="trasparenza"></div>
+            </div>
+            <div class="successivo" @click="vediSuccessiva">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="precedente" @click="vediPrecedente">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
